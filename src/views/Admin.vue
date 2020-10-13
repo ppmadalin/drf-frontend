@@ -1,17 +1,18 @@
 <template>
   <div id="home">
-    <the-navbar />
+    <h1>Welcome {{ user.user.username }}!</h1>
+    <h2>The user is logged: {{ user.user.isAuthenticated }}</h2>
     <div id="content">
       <router-view :key="$route.path" />
     </div>
   </div>
 </template>
 <script>
-import TheNavbar from "@/components/TheNavbar.vue";
-
+import { mapState } from "vuex";
 export default {
-  components: {
-    TheNavbar,
+  components: {},
+  computed: {
+    ...mapState(["user"]),
   },
 };
 </script>

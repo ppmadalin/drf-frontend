@@ -1,7 +1,9 @@
 <template>
   <div id="navbar" class="navbar">
     <nav class="navbar__content">
-      <h1 class="navbar__logo"><a href="#">PopUp</a></h1>
+      <h1 class="navbar__logo">
+        <router-link :to="{ name: 'Home' }">PopUp</router-link>
+      </h1>
       <ul class="navbar__menu">
         <li class="navbar__menu-item">
           <router-link :to="{ name: 'Home' }">Posts</router-link>

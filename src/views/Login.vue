@@ -1,7 +1,8 @@
 <template>
   <div id="login" class="login">
     <div class="login__content">
-      <form class="login__form">
+      <h1>{{ user.user.isAuthenticated }}</h1>
+      <form class="login__form" @submit.prevent="login">
         <div class="login__form-group">
           <label for="username">Username</label>
           <input type="text" id="username" />
@@ -15,6 +16,28 @@
     </div>
   </div>
 </template>
+<script>
+import { mapState } from "vuex";
+
+export default {
+  methods: {
+    login: function() {
+      this.$store
+        .dispatch("authenticate")
+        .then(() => {
+          console.log("The user was authetnicated");
+          //   this.$router.push({ name: "Admin" });
+        })
+        .catch(() => {
+          console.log("something wrong happend");
+        });
+    },
+  },
+  computed: {
+    ...mapState(["user"]),
+  },
+};
+</script>
 <style scoped>
 .login {
   height: 80%;
