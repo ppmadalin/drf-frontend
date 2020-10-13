@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 // Import modules
-import * as user from '@/store/modules/user.js'
+import user from '@/store/modules/user.js'
 
 Vue.use(Vuex)
 

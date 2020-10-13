@@ -1,19 +1,23 @@
-export const state = {
+const state = {
     user: {
-        username: "",
+        username: "madalin",
         token: "",
         isAuthenticated: false
     }
 }
 
-export const mutations = {
+const mutations = {
     IS_AUTHENTICATED(state){
-        state.isAuthenticated = true
+        state.isAuthenticated = !state.isAuthenticated
     }
 }
 
-export const actions = {
-    authenticate({commit}){
+const actions = {
+    authUser({commit}){
         commit('IS_AUTHENTICATED')
     }
+}
+
+export default {
+    state, mutations, actions
 }

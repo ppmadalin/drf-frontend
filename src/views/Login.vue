@@ -1,7 +1,8 @@
 <template>
   <div id="login" class="login">
     <div class="login__content">
-      <h1>{{ user.user.isAuthenticated }}</h1>
+      <h1>Welcome {{ user.user.username }}</h1>
+      <h4>The user is authenticated: {{ user.user.isAuthenticated }}</h4>
       <form class="login__form" @submit.prevent="login">
         <div class="login__form-group">
           <label for="username">Username</label>
@@ -20,21 +21,13 @@
 import { mapState } from "vuex";
 
 export default {
-  methods: {
-    login: function() {
-      this.$store
-        .dispatch("authenticate")
-        .then(() => {
-          console.log("The user was authetnicated");
-          //   this.$router.push({ name: "Admin" });
-        })
-        .catch(() => {
-          console.log("something wrong happend");
-        });
-    },
-  },
   computed: {
     ...mapState(["user"]),
+  },
+  methods: {
+    login: function() {
+      this.$store.dispatch("authUser");
+    },
   },
 };
 </script>
