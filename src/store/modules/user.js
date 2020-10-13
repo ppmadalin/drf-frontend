@@ -1,6 +1,6 @@
 const state = {
     user: {
-        username: "madalin",
+        username: "",
         token: "",
         isAuthenticated: false
     }
@@ -8,13 +8,17 @@ const state = {
 
 const mutations = {
     IS_AUTHENTICATED(state){
-        state.isAuthenticated = !state.isAuthenticated
+        state.user.isAuthenticated = !state.user.isAuthenticated
+    },
+    UPDATE_USER(state, payload){
+        state.user.username = payload.username
     }
 }
 
 const actions = {
-    authUser({commit}){
+    authUser({commit}, payload){
         commit('IS_AUTHENTICATED')
+        commit('UPDATE_USER', payload)
     }
 }
 

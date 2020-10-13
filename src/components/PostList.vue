@@ -25,21 +25,12 @@
 export default {
   data() {
     return {
-      posts: [
-        {
-          id: 1,
-          title: "First post",
-          body:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores expedita illum cum est reiciendis impedit reprehenderit optio, in quibusdam dolor unde vero labore commodi harum quia dicta provident cupiditate incidunt similique eius voluptates velit architecto, aperiam eum. Molestias magnam optio distinctio, labore quam eos fuga aliquam quia fugiat? Unde numquam veritatis sunt reprehenderit delectus voluptates cumque reiciendis natus dignissimos? Qui necessitatibus nulla nemo voluptas ducimus eaque quasi vero facilis quidem vel placeat ea, debitis facere at inventore ipsam reiciendis officia! Beatae ab repellat eaque voluptate! Inventore accusamus perspiciatis cupiditate quis vel praesentium impedit expedita, voluptatem dolorem aliquid facilis sed omnis.",
-        },
-        {
-          id: 2,
-          title: "Second post",
-          body:
-            "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores expedita illum cum est reiciendis impedit reprehenderit optio, in quibusdam dolor unde vero labore commodi harum quia dicta provident cupiditate incidunt similique eius voluptates velit architecto, aperiam eum. Molestias magnam optio distinctio, labore quam eos fuga aliquam quia fugiat? Unde numquam veritatis sunt reprehenderit delectus voluptates cumque reiciendis natus dignissimos? Qui necessitatibus nulla nemo voluptas ducimus eaque quasi vero facilis quidem vel placeat ea, debitis facere at inventore ipsam reiciendis officia! Beatae ab repellat eaque voluptate! Inventore accusamus perspiciatis cupiditate quis vel praesentium impedit expedita, voluptatem dolorem aliquid facilis sed omnis.",
-        },
-      ],
+      posts: [],
     };
+  },
+  created() {
+    this.$store.dispatch("getPosts");
+    console.log("Test");
   },
 };
 </script>
