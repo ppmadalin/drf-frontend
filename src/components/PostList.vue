@@ -1,7 +1,7 @@
 <template>
   <div id="post" class="post">
     <template>
-      <base-card v-for="post in posts" :key="post.id">
+      <base-card v-for="post in posts.posts" :key="post.id">
         <template v-slot:title>
           <router-link :to="{ name: 'Post', params: { id: post.id } }"
             ><h2>{{ post.title }}</h2></router-link
@@ -11,26 +11,21 @@
           {{ post.body }}
         </template>
         <template v-slot:footer>
-          <h4>Card footer</h4>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-            ab nulla possimus quos modi dolor dolores minima sed, cumque beatae!
-          </p>
+          <h4>Written by {{ post.owner }}</h4>
+          <p>Created on {{ post.created }}</p>
         </template>
       </base-card>
     </template>
   </div>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
-  data() {
-    return {
-      posts: [],
-    };
+  computed: {
+    ...mapState(["posts"]),
   },
   created() {
     this.$store.dispatch("getPosts");
-    console.log("Test");
   },
 };
 </script>

@@ -1,4 +1,4 @@
-import PostService from '@/services/UserService.js'
+import PostService from '@/services/PostService.js'
 
 
 const state = {
@@ -8,12 +8,11 @@ const state = {
 const getters = {}
 
 const actions = {
-    getPosts(){
-        const data = PostService.getPostsService()
-        // if (data){
-        //     console.log(data)
-        // }
-        console.log(data)
+    getPosts( {commit} ){
+        PostService.getPosts()
+        .then(response => {
+            commit('GET_POSTS', response.data.results)
+        })
     }
 }
 

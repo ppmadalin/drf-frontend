@@ -1,3 +1,6 @@
+import UserService from '@/services/UserService.js'
+
+
 const state = {
     user: {
         username: "",
@@ -17,8 +20,22 @@ const mutations = {
 
 const actions = {
     authUser({commit}, payload){
-        commit('IS_AUTHENTICATED')
-        commit('UPDATE_USER', payload)
+
+        UserService.login(payload)
+        .then(response => {
+            commit('IS_AUTHENTICATED')
+            commit('UPDATE_USER', response)
+        })
+        .catch(error => {
+            if (error.response){
+                console.log(error.response.data)
+            } else if (error.request){
+                console.log(error.message)
+            } else {
+                console.log(error)
+            }
+        })
+
     }
 }
 

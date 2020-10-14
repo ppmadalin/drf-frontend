@@ -30,10 +30,21 @@ export default {
   },
   methods: {
     login: function() {
-      const user = { username: this.username };
-      this.$store.dispatch("authUser", user).then(() => {
-        this.$router.push({ name: "Admin" });
-      });
+      // Data to be sent
+      const payload = {
+        username: this.username,
+        password: this.password,
+      };
+      // Call the vuex action
+      this.$store
+        .dispatch("authUser", payload)
+        .then(() => {
+          const redirectPath = this.$route.query.redirect || "/";
+          this.$router.push(redirectPath);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
   },
 };
